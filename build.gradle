@@ -35,6 +35,7 @@ dependencyManagement {
 
 dependencies {
   compile('org.springframework.boot:spring-boot-starter')
+  compile('org.springframework.cloud:spring-cloud-starter-zuul')
   compile('de.codecentric:spring-boot-admin-server:1.4.6')
   compile('de.codecentric:spring-boot-admin-server-ui:1.4.6')
 
