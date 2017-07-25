@@ -13,7 +13,7 @@ hs_err_pid*
 
 # Gradle
 .gradle/
-build/
+#build/
 target/
 logs/
 
@@ -27,3 +27,9 @@ logs/
 \.classpath
 
 \.settings/
+
+build/libs/
+
+build/resources/
+
+build/tmp/
