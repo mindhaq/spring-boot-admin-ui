@@ -12,5 +12,4 @@ docker run -d -p 8090:8080 --name spring-boot-admin luctor/spring-boot-admin-ui:
 
 Now just go to <http://localhost:8090> (or <http://your-docker:8090>) with your browser.
 
-
 Cloned from blog [post](http://aetas.pl/?p=347).
