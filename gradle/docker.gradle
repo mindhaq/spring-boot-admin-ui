@@ -17,7 +17,7 @@ docker {
   port 8080
   generateDockerfile false
   dockerfile new File(project.projectDir, 'docker/Dockerfile').text
-  imageName "aetas/spring-boot-admin-docker:${project.version}"
+  imageName "luctor/spring-boot-admin-ui:${project.version}"
 }
 
 task copyDockerFiles(dependsOn: assemble) << {

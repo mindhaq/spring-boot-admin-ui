@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springBootVersion = '1.4.0.RELEASE'
+    springBootVersion = '1.5.4.RELEASE'
   }
   repositories {
     mavenCentral()
@@ -11,12 +11,12 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 
-version = '1.4.1'
+version = '1.4.6'
 
 jar {
-  baseName = 'spring-boot-admin-docker'
+  baseName = 'spring-boot-admin-ui'
   version = project.version
 }
 sourceCompatibility = 1.8
@@ -28,15 +28,15 @@ repositories {
 
 dependencyManagement {
   imports {
-    mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Brixton.SR5'
+    mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Dalston.SR1'
   }
 }
 
 
 dependencies {
   compile('org.springframework.boot:spring-boot-starter')
-  compile('de.codecentric:spring-boot-admin-server:1.4.1')
-  compile('de.codecentric:spring-boot-admin-server-ui:1.4.1')
+  compile('de.codecentric:spring-boot-admin-server:1.4.6')
+  compile('de.codecentric:spring-boot-admin-server-ui:1.4.6')
 
   testCompile('org.springframework.boot:spring-boot-starter-test')
 }
