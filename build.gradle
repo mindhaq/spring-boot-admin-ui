@@ -35,7 +35,6 @@ dependencyManagement {
 
 dependencies {
   compile('org.springframework.boot:spring-boot-starter')
-  compile('org.springframework.boot:spring-boot-starter-security')
   compile('de.codecentric:spring-boot-admin-server:1.4.1')
   compile('de.codecentric:spring-boot-admin-server-ui:1.4.1')
 
