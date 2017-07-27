@@ -1,4 +1,23 @@
-#security:
-#  user:
-#    name: user
-#    password: password
+management:
+  context-path: /mgmt
+  
+security:
+  user:
+    name: admin
+    password: password
+
+spring:
+  boot:
+    admin:
+      url: http://spring-boot-admin:8080
+      auth:
+        username: admin
+        password: password
+  application:
+    name: spring-boot-admin
+    
+logging:
+  level:
+    org.springframework.security: INFO
+
+zuul.sensitiveHeaders:
