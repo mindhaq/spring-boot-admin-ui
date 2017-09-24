@@ -13,6 +13,8 @@ spring:
       auth:
         username: admin
         password: password
+      notify:
+        rate: 300000
   application:
     name: spring-boot-admin
     
