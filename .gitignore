@@ -4,7 +4,7 @@
 .mtj.tmp/
 
 # Package Files #
-#*.jar
+*.jar
 *.war
 *.ear
 
@@ -13,7 +13,7 @@ hs_err_pid*
 
 # Gradle
 .gradle/
-#build/
+/build/
 target/
 logs/
 
@@ -28,10 +28,9 @@ logs/
 
 \.settings/
 
-build/libs/
-
-build/resources/
-
-build/tmp/
-
 build/docker/artifacts/
+.idea/
+out/
+*.iml
+*.ipr
+*.iws
