@@ -1,50 +1,50 @@
 buildscript {
-  ext {
-    springBootVersion = '1.5.4.RELEASE'
-  }
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-  }
+    ext {
+        springBootVersion = '1.5.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
-version = '1.5.2'
+version = '1.5.4'
 
 jar {
-  baseName = 'spring-boot-admin-ui'
-  version = project.version
+    baseName = 'spring-boot-admin-ui'
+    version = project.version
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencyManagement {
-  imports {
-    mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Dalston.SR1'
-  }
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Dalston.SR3'
+    }
 }
 
 
 dependencies {
-  compile('org.springframework.boot:spring-boot-starter')
-  compile('org.springframework.boot:spring-boot-starter-security')
-  compile('de.codecentric:spring-boot-admin-server:1.5.2')
-  compile('de.codecentric:spring-boot-admin-server-ui:1.5.2')
-  compile('de.codecentric:spring-boot-admin-server-ui-login:1.5.2')
+    compile "org.springframework.boot:spring-boot-starter"
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile "de.codecentric:spring-boot-admin-server:${version}"
+    compile "de.codecentric:spring-boot-admin-server-ui:${version}"
+    compile "de.codecentric:spring-boot-admin-server-ui-login:${version}"
 
-  testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '4.2'
+    gradleVersion = '4.2'
 }
 
 allprojects {
