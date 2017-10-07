@@ -14,7 +14,17 @@ spring:
         username: admin
         password: password
       notify:
-        rate: 300000
+        rate: 60000
+        reminder:
+          period: 3600000
+        mail:
+          enabled: false
+          from:
+          to:
+          mailgun:
+            api:
+              url:
+              key:
   application:
     name: spring-boot-admin
     
