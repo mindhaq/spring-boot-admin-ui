@@ -34,3 +34,6 @@ spring:
               url: https://api.mailgun.net/v3/XXX.mailgun.org/messages
               key: key-XXX
 ```
+
+# Build
+Run ``gradle buildDocker``

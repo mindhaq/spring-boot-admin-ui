@@ -28,7 +28,6 @@ logs/
 
 \.settings/
 
-build/docker/artifacts/
 .idea/
 out/
 *.iml
