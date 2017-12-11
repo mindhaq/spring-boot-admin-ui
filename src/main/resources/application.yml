@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 management:
   context-path: /mgmt
   
@@ -9,10 +12,14 @@ security:
 spring:
   boot:
     admin:
-      url: http://spring-boot-admin:8080
-      auth:
-        username: admin
-        password: password
+      url: http://localhost:${server.port}
+      username: ${security.user.name}
+      password: ${security.user.password}
+      client:
+        service-base-url: http://localhost:${server.port}
+        metadata:
+          user.name: ${security.user.name}
+          user.password: ${security.user.password}
       notify:
         rate: 60000
         reminder:

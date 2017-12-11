@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.7.RELEASE'
+        springBootVersion = '1.5.9.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
-version = '1.5.4'
+version = '1.5.5'
 
 jar {
     baseName = 'spring-boot-admin-ui'
@@ -36,6 +36,7 @@ dependencyManagement {
 dependencies {
     compile "org.springframework.boot:spring-boot-starter"
     compile "org.springframework.boot:spring-boot-starter-security"
+    compile "de.codecentric:spring-boot-admin-starter-client:${version}"
     compile "de.codecentric:spring-boot-admin-server:${version}"
     compile "de.codecentric:spring-boot-admin-server-ui:${version}"
     compile "de.codecentric:spring-boot-admin-server-ui-login:${version}"
@@ -44,7 +45,8 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.2'
+    gradleVersion = '4.2.1'
+    distributionType = "ALL"
 }
 
 allprojects {
