@@ -21,6 +21,7 @@ import pl.aetas.springbootadmin.notifier.mail.MailgunService;
  */
 @Configuration
 @EnableScheduling
+@ConditionalOnProperty("spring.boot.admin.notify.mail.enabled")
 public class NotifierConfiguration
 {
 	@Autowired
@@ -48,7 +49,6 @@ public class NotifierConfiguration
 	}
 
 	@Bean
-	@ConditionalOnProperty("spring.boot.admin.notify.mail.enabled")
 	public MailgunNotifier mailgunNotifier()
 	{
 		return new MailgunNotifier(mailgunService, from, to);
