@@ -1,17 +1,20 @@
 buildscript {
     ext {
         springBootVersion = '1.5.9.RELEASE'
+        gradleDockerVersion = "1.2"
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("se.transmode.gradle:gradle-docker:${gradleDockerVersion}")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'docker'
 
 version = '1.5.5'
 
@@ -64,4 +67,20 @@ allprojects {
     }
 }
 
-apply from: 'gradle/docker.gradle'
+task buildDocker(type: Docker) {
+    baseImage = 'java:8-jre-alpine'
+    project.group = "gelder"
+    applicationName = "spring-boot-admin-ui"
+    maintainer = "Martin Geldmacher"
+    entryPoint(['java',
+                '-jar',
+                '/app.jar'])
+    exposePort(8080) // UI
+
+    addFile {
+        from jar
+        rename {'app.jar'}
+    }
+}
+
+buildDocker.dependsOn(build)
