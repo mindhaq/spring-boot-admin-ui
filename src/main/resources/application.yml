@@ -2,36 +2,33 @@ server:
   port: 8080
 
 management:
-  context-path: /mgmt
-  
+  endpoints:
+    web:
+      base-path: /mgmt
+      exposure:
+        include: "*"
+
 security:
   user:
     name: admin
     password: password
 
 spring:
+  security:
+    user:
+      name: ${security.user.name}
+      password: ${security.user.password}
   boot:
     admin:
-      url: http://localhost:${server.port}
-      username: ${security.user.name}
-      password: ${security.user.password}
       client:
-        service-base-url: http://localhost:${server.port}
-        metadata:
-          user.name: ${security.user.name}
-          user.password: ${security.user.password}
-      notify:
-        rate: 60000
-        reminder:
-          period: 3600000
-        mail:
-          enabled: false
-          from:
-          to:
-          mailgun:
-            api:
-              url:
-              key:
+        url: http://localhost:${server.port}
+        username: ${security.user.name}       #These two are needed so that the client
+        password: ${security.user.password}   #can register at the protected server api
+        instance:
+          metadata:
+            user.name: ${security.user.name}         #These two are needed so that the server
+            user.password: ${security.user.password} #can access the protected client endpoints
+
   application:
     name: spring-boot-admin
     
@@ -39,5 +36,3 @@ logging:
   level:
     org.springframework.security: INFO
 
-zuul:
-  sensitiveHeaders:
