@@ -4,6 +4,7 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("se.transmode.gradle:gradle-docker:${gradleDockerVersion}")
@@ -12,12 +13,14 @@ buildscript {
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.0.5.RELEASE'
+    id "com.gorylenko.gradle-git-properties" version "1.5.2"
 }
 
 apply plugin: 'java'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'docker'
 
+group = 'com.mindhaq'
 version = '2.0.3'
 
 jar {
@@ -53,26 +56,15 @@ task wrapper(type: Wrapper) {
     distributionType = "ALL"
 }
 
-allprojects {
-    apply plugin: 'idea'
-    idea {
-        module {
-            outputDir file('build/classes/main')
-            testOutputDir file('build/classes/test')
-        }
-    }
-    if(project.convention.findPlugin(JavaPluginConvention)) {
-        // Change the output directory for the main and test source sets back to the old path
-        sourceSets.main.output.classesDir = new File(buildDir, "classes/main")
-        sourceSets.test.output.classesDir = new File(buildDir, "classes/test")
-    }
+springBoot {
+    buildInfo()
 }
 
 task buildDocker(type: Docker) {
     baseImage = 'java:8-jre-alpine'
-    project.group = "gelder"
+    project.group = "mindhaq"
     applicationName = "spring-boot-admin-ui"
-    maintainer = "Martin Geldmacher"
+    maintainer = "Rüdiger Schulz <code@mindhaq.com>"
     entryPoint(['java',
                 '-jar',
                 '/app.jar'])
