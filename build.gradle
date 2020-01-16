@@ -21,7 +21,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'docker'
 
 group = 'com.mindhaq'
-version = '2.0.3'
+version = '2.0.6'
 
 jar {
     baseName = 'spring-boot-admin-ui'
